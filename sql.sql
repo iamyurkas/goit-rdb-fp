@@ -39,8 +39,8 @@ DROP COLUMN code;
 
 SELECT 
 	id, 
-    MAX(number_rabies) AS max_value, 
-    MIN(number_rabies) AS min_value, 
+	MAX(number_rabies) AS max_value, 
+	MIN(number_rabies) AS min_value, 
 	AVG(number_rabies) AS average_value 
 FROM infectious_cases_normalized
 WHERE number_rabies IS NOT NULL AND number_rabies <> ''
@@ -64,9 +64,9 @@ RETURNS DATE
 DETERMINISTIC 
 NO SQL
 BEGIN
-    DECLARE result DATE;
-    SET result = MAKEDATE(year, 1);
-    RETURN result;
+	DECLARE result DATE;
+	SET result = MAKEDATE(year, 1);
+	RETURN result;
 END //
 
 DELIMITER ;
@@ -80,9 +80,9 @@ RETURNS DATE
 DETERMINISTIC 
 NO SQL
 BEGIN
-    DECLARE result DATE;
-    SET result = CURDATE();
-    RETURN result;
+	DECLARE result DATE;
+	SET result = CURDATE();
+	RETURN result;
 END //
 
 DELIMITER ;
@@ -96,9 +96,9 @@ RETURNS INT
 DETERMINISTIC 
 NO SQL
 BEGIN
-    DECLARE result INT;
-    SET result = YEAR(cur_date) - YEAR(start_date);
-    RETURN result;
+	DECLARE result INT;
+	SET result = YEAR(cur_date) - YEAR(start_date);
+	RETURN result;
 END //
 
 DELIMITER ;
@@ -125,9 +125,9 @@ RETURNS INT
 DETERMINISTIC 
 NO SQL
 BEGIN
-    DECLARE result INT;
-    SET result = YEAR(CURDATE()) - start_date;
-    RETURN result;
+	DECLARE result INT;
+	SET result = YEAR(CURDATE()) - start_date;
+	RETURN result;
 END //
 
 DELIMITER ;
@@ -135,5 +135,5 @@ DELIMITER ;
 SELECT
 	Year, 
 	curdate() as cur_date, 
-    fn_cur_year_diff(Year) as year_diff
+	fn_cur_year_diff(Year) as year_diff
 from infectious_cases;
